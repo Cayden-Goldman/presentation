@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb2d;
     Transform big;
     bool spinning;
+    public GameObject rings;
 
     void Start()
     {
@@ -77,6 +78,7 @@ public class Movement : MonoBehaviour
     {
         if (collision.CompareTag("onion"))
         {
+            Instantiate(rings, collision.transform.position, new());
             Destroy(collision.gameObject);
         }
     }
