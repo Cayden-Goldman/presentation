@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     Transform big;
     bool spinning;
     public GameObject rings;
+    public AudioSource sound;
 
     void Start()
     {
@@ -79,6 +80,7 @@ public class Movement : MonoBehaviour
         if (collision.CompareTag("onion"))
         {
             Instantiate(rings, collision.transform.position, new());
+            sound.Play();
             Destroy(collision.gameObject);
         }
     }
