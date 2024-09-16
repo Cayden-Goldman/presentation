@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     SpriteRenderer sr;
     Rigidbody2D rb2d;
     Transform big;
-    bool spinning;
+    bool spinning = false;
     public GameObject rings;
     public AudioSource sound;
 
@@ -54,11 +54,11 @@ public class Movement : MonoBehaviour
     {
         Vector3 startPos = transform.position + new Vector3(0, 1);
         spinning = true;
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.1f);
         while (!Input.GetKeyDown(KeyCode.R))
         {
             yield return null;
-            transform.position = startPos + new Vector3(Mathf.Sin(Time.time * 10), Mathf.Cos(Time.time * 10)) * 2;
+            transform.position = startPos + new Vector3(Mathf.Sin(Time.realtimeSinceStartup * 10), Mathf.Cos(Time.realtimeSinceStartup * 10)) * 2;
         }
         spinning = false;
     }
